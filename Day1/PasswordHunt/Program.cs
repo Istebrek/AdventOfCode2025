@@ -35,11 +35,23 @@ foreach (char c in input)
     {
         number = c;
         instruction += c.ToString();
+        if (instructions.Count() == 4176 && c == input.Last())
+        {
+            instructions.Add(instruction);
+        }
     }
 }
 
-//Ensure you get the instructions as expected in the text file, then comment it out. Index 104 expects instruction R427.
-Console.WriteLine(instructions[4176]);    
+//Ensure you get the instructions as expected in the text file, then comment it out. 
+//Index 104 expects instruction R427.
+Console.WriteLine(instructions[104]);   
+
+//Index 4176 expects L34 and is the last instruction.
+Console.WriteLine(instructions[4176]);
+
+//Expects 4177 instructions.
+Console.WriteLine(instructions.Count());
+
 // int i = 1;
 // if (i < 10)
 // {
@@ -54,4 +66,3 @@ Console.WriteLine(instructions[4176]);
 
 
 
-const int start = 50;
