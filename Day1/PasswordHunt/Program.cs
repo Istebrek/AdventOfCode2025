@@ -42,27 +42,63 @@ foreach (char c in input)
     }
 }
 
-//Ensure you get the instructions as expected in the text file, then comment it out. 
-//Index 104 expects instruction R427.
-Console.WriteLine(instructions[104]);   
-
-//Index 4176 expects L34 and is the last instruction.
-Console.WriteLine(instructions[4176]);
-
-//Expects 4177 instructions.
-Console.WriteLine(instructions.Count());
-
+//Ensure you get the instructions as expected in the text file, then comment it out.
 // int i = 1;
-// if (i < 10)
+// foreach (string s in instructions)
 // {
-//     foreach (string s in instructions)
-//     {
-//         Console.Write($"Instruction number {i}: {s}");
-//         i++;    
-        
-//     }
+//     Console.Write($"Instruction number {i}: {s}");
+//     i++;    
 // }
 
+//Index 104 expects instruction R427.
+// Console.WriteLine(instructions[104]);
 
+//Index 4176 expects L34 and is the last instruction.
+// Console.WriteLine(instructions[4176]);
 
+//Expects 4177 instructions.
+// Console.WriteLine(instructions.Count());
+
+//Step 4: Iterate through the list of instructions and turn the dial.
+int start = 50;
+List<int> landsOn = new();
+
+foreach (string s in instructions)
+{
+    if (s.Contains('R'))
+    {
+        string n = s.Substring(1);
+        int num = Convert.ToInt32(n);
+        int index = start+num;
+        if (index < 99)
+        {
+            start = index;
+            landsOn.Add(start);
+        }
+        while (index > 99)
+        {
+            start = index -= 99;
+            landsOn.Add(start);
+        }
+    }
+    if (s.Contains('L'))
+    {
+        string n = s.Substring(1);
+        int num = Convert.ToInt32(n);
+        int index = start-num;
+        if (index > 0)
+        {
+            start = index;
+            landsOn.Add(start);
+        }
+        while (index < 0)
+        {
+            start = index += 99;
+            landsOn.Add(start);
+        }
+    }
+}
+
+//Ensure you get correct value, then comment it out. Below index expects value 28.
+// Console.WriteLine(landsOn[6]);
 
