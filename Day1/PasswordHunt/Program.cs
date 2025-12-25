@@ -127,4 +127,5 @@ foreach (int n in landsOn)
     }
 }
 
+//Test against submission at the official site, should be 982.
 Console.WriteLine(zeroes);
