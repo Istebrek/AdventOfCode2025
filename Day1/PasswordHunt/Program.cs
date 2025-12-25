@@ -70,30 +70,37 @@ foreach (string s in instructions)
         string n = s.Substring(1);
         int num = Convert.ToInt32(n);
         int index = start+num;
-        if (index < 99)
+        if (index <= 99)
         {
             start = index;
             landsOn.Add(start);
         }
-        while (index > 99)
+        if (index > 99)
         {
-            start = index -= 99;
+            while (index > 99)
+            {
+                start = index -= 100;
+            }   
             landsOn.Add(start);
         }
+
     }
     if (s.Contains('L'))
     {
         string n = s.Substring(1);
         int num = Convert.ToInt32(n);
         int index = start-num;
-        if (index > 0)
+        if (index >= 0)
         {
             start = index;
             landsOn.Add(start);
         }
-        while (index < 0)
+        if (index < 0) 
         {
-            start = index += 99;
+            while (index < 0)
+            {
+                start = index += 100;
+            }
             landsOn.Add(start);
         }
     }
@@ -102,3 +109,22 @@ foreach (string s in instructions)
 //Ensure you get correct value, then comment it out. Below index expects value 28.
 // Console.WriteLine(landsOn[6]);
 
+// foreach (int test in landsOn)
+// {
+//     Console.WriteLine(test);
+// }
+
+//Ensure all rotations are accounted for, then comment it out. Below count should be 4177.
+Console.WriteLine(landsOn.Count());
+
+//Step 5: Sum the times the dial lands on 0.
+int zeroes = 0;
+foreach (int n in landsOn)
+{
+    if (n == 0)
+    {
+        zeroes++;
+    }
+}
+
+Console.WriteLine(zeroes);
