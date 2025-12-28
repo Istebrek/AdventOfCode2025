@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Day2", "Day2", "{0F7079F7-E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SneakyId", "Day2\SneakyId\SneakyId.csproj", "{F039D170-AACC-43E8-B9A3-6BBF74C63CEE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Day3", "Day3", "{0D665604-C928-4F15-2E39-29EE6604C658}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatteryBanks", "Day3\BatteryBanks\BatteryBanks.csproj", "{CA38B98A-3183-4190-8590-AF390CD45082}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,18 @@ Global
 		{F039D170-AACC-43E8-B9A3-6BBF74C63CEE}.Release|x64.Build.0 = Release|Any CPU
 		{F039D170-AACC-43E8-B9A3-6BBF74C63CEE}.Release|x86.ActiveCfg = Release|Any CPU
 		{F039D170-AACC-43E8-B9A3-6BBF74C63CEE}.Release|x86.Build.0 = Release|Any CPU
+		{CA38B98A-3183-4190-8590-AF390CD45082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA38B98A-3183-4190-8590-AF390CD45082}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA38B98A-3183-4190-8590-AF390CD45082}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CA38B98A-3183-4190-8590-AF390CD45082}.Debug|x64.Build.0 = Debug|Any CPU
+		{CA38B98A-3183-4190-8590-AF390CD45082}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CA38B98A-3183-4190-8590-AF390CD45082}.Debug|x86.Build.0 = Debug|Any CPU
+		{CA38B98A-3183-4190-8590-AF390CD45082}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA38B98A-3183-4190-8590-AF390CD45082}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA38B98A-3183-4190-8590-AF390CD45082}.Release|x64.ActiveCfg = Release|Any CPU
+		{CA38B98A-3183-4190-8590-AF390CD45082}.Release|x64.Build.0 = Release|Any CPU
+		{CA38B98A-3183-4190-8590-AF390CD45082}.Release|x86.ActiveCfg = Release|Any CPU
+		{CA38B98A-3183-4190-8590-AF390CD45082}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +68,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{17333300-7451-647D-215B-16D102387229} = {A80DBF83-DCD5-128A-3B07-83B9CCE4E82C}
 		{F039D170-AACC-43E8-B9A3-6BBF74C63CEE} = {0F7079F7-E55D-ED73-0375-19BFE3B19470}
+		{CA38B98A-3183-4190-8590-AF390CD45082} = {0D665604-C928-4F15-2E39-29EE6604C658}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C47C1C7-6863-4164-A7D8-93CE7A6EF84C}
