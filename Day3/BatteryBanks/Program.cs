@@ -1,6 +1,7 @@
-﻿//Step 1: Add input and read it.
+﻿using BatteryBanks;
+//Step 1: Add input and read it.
 string path = AppContext.BaseDirectory;
-string allBanks = File.ReadAllText(path + "../../../example.txt");
+string allBanks = File.ReadAllText(path + "../../../input.txt");
 
 //Step 2: Separate each bank and add them to a list.
 List<string> banks = allBanks.Split('\n').Select(bank => bank.Trim()).ToList();
@@ -44,58 +45,11 @@ foreach (string bank in banks)
     }
 }
 
+// int sum = 0;
+// foreach (string jolt in highestJolts) sum += Convert.ToInt32(jolt);
+// Console.WriteLine(sum);
 
-int sum = 0;
+Answer answerInstance = new Answer();
+long answer = answerInstance.ReturnJoltage(banks);
+Console.WriteLine(answer);
 
-foreach (string jolt in highestJolts) sum += Convert.ToInt32(jolt);
-
-Console.WriteLine(sum);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// foreach (string bank in banks)
-// {
-//     string highestJolt = "";
-//     int characterCount = 0;
-
-//     for (int i = 9; i > 0; i--)
-//     {
-//         for (int j = 0; j < bank.Length; j++)
-//         {
-//             char c = bank[j];
-//             if (c.ToString() == i.ToString() && j < bank.LastIndexOf(bank)) //den första karaktären får inte vara 9 om 9 är den sista batterit i banken
-//             {
-//                 highestJolt += i;
-//                 characterCount++;
-//                 if (characterCount == 2)
-//                 {
-//                     highestJolts.Add(highestJolt);
-//                     break;
-//                 } 
-//                 continue;
-//             }
-//         }
-//         if (characterCount == 2) break;
-//     }
-// }
-
-// foreach (string bank in highestJolts)
-//     Console.WriteLine(bank);
