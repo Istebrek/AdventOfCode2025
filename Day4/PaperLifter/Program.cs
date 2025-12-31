@@ -101,4 +101,9 @@ for (int i = 0; i < allRolls.Length; i++)
 // Console.WriteLine(allRolls);
 // Console.WriteLine(allRolls.Length);
 // Console.WriteLine(positionsPerRow);
-Console.WriteLine(accessSum);
+// Console.WriteLine(accessSum);
+
+//PART 2
+Repeat repeat = new ();
+int sum2 = repeat.TotalRemovedRolls(positions, allRolls, row, totalRows);
+Console.WriteLine(sum2);
