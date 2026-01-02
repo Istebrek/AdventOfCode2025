@@ -10,28 +10,47 @@ List<string> fullInput = entireExample.Split('\n').Select(x => x.Trim()).ToList(
 // List<string> fullInput = entireInput.Split('\n').Select(x => x.Trim()).ToList();
 int indexFrom = fullInput.FindIndex(x => x == "") + 1;
 
-int freshCount = 0;
-for (int i = indexFrom; i < fullInput.Count; i++)
+// int freshCount = 0;
+// for (int i = indexFrom; i < fullInput.Count; i++)
+// {
+//     string id = fullInput[i];
+
+//     if (string.IsNullOrWhiteSpace(id)) continue;
+
+//     for (int j = 0; j < indexFrom - 1; j++)
+//     {
+//         string range = fullInput[j];
+//         List<string> ranges = range.Split("-").ToList();
+//         long start = Convert.ToInt64(ranges[0]);
+//         long end = Convert.ToInt64(ranges[1]);
+
+//         if (Convert.ToInt64(id) < start || Convert.ToInt64(id) > end) continue;
+//         if (Convert.ToInt64(id) >= start && Convert.ToInt64(id) <= end)
+//         {
+//             freshCount++;
+//             break;
+//         }
+
+//     }
+// }
+
+// Console.WriteLine(freshCount);
+
+//PART 2
+HashSet<long> freshIds = new();
+int freshIdsCount = 0;
+for (int a = 0; a < indexFrom - 1; a++)
 {
-    string id = fullInput[i];
+    string range = fullInput[a];
+    List<string> ranges = range.Split('-').ToList();
+    long start = Convert.ToInt64(ranges[0]);
+    long end = Convert.ToInt64(ranges[1]);
 
-    if (string.IsNullOrWhiteSpace(id)) continue;
-
-    for (int j = 0; j < indexFrom - 1; j++)
+    for (long b = start; b <= end; b++)
     {
-        string range = fullInput[j];
-        List<string> ranges = range.Split("-").ToList();
-        long start = Convert.ToInt64(ranges[0]);
-        long end = Convert.ToInt64(ranges[1]);
-
-        if (Convert.ToInt64(id) < start || Convert.ToInt64(id) > end) continue;
-        if (Convert.ToInt64(id) >= start && Convert.ToInt64(id) <= end)
-        {
-            freshCount++;
-            break;
-        }
-
+        if (freshIds.Contains(b)) continue;
+        freshIds.Add(b);
     }
 }
 
-Console.WriteLine(freshCount);
+Console.WriteLine(freshIds.Count);
