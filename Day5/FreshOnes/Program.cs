@@ -6,8 +6,8 @@ Inputs inputs = new();
 string entireExample = inputs.Input(exampleInput);
 string entireInput = inputs.Input(input);
 
-List<string> fullInput = entireExample.Split('\n').Select(x => x.Trim()).ToList();
-// List<string> fullInput = entireInput.Split('\n').Select(x => x.Trim()).ToList();
+// List<string> fullInput = entireExample.Split('\n').Select(x => x.Trim()).ToList();
+List<string> fullInput = entireInput.Split('\n').Select(x => x.Trim()).ToList();
 int indexFrom = fullInput.FindIndex(x => x == "") + 1;
 
 // int freshCount = 0;
@@ -37,20 +37,32 @@ int indexFrom = fullInput.FindIndex(x => x == "") + 1;
 // Console.WriteLine(freshCount);
 
 //PART 2
-HashSet<long> freshIds = new();
-int freshIdsCount = 0;
-for (int a = 0; a < indexFrom - 1; a++)
-{
-    string range = fullInput[a];
-    List<string> ranges = range.Split('-').ToList();
-    long start = Convert.ToInt64(ranges[0]);
-    long end = Convert.ToInt64(ranges[1]);
+List<(long start, long end)> ranges = new();
 
-    for (long b = start; b <= end; b++)
-    {
-        if (freshIds.Contains(b)) continue;
-        freshIds.Add(b);
-    }
+for (int i = 0; i < indexFrom - 1; i++)
+{
+    var parts = fullInput[i].Split('-');
+    long start = long.Parse(parts[0]);
+    long end = long.Parse(parts[1]);
+    ranges.Add((start, end));
 }
 
-Console.WriteLine(freshIds.Count);
+ranges.Sort((a, b) => a.start.CompareTo(b.start));
+
+long freshIdCount = 0;
+long thisStart = ranges[0].start;
+long thisEnd = ranges[0].end;
+
+foreach (var (start, end) in ranges.Skip(1))
+{
+    if (start <= thisEnd + 1) thisEnd = Math.Max(thisEnd, end);
+    else
+    {
+        freshIdCount += thisEnd - thisStart + 1;
+        thisStart = start;
+        thisEnd = end;
+    }
+}
+freshIdCount += thisEnd - thisStart + 1;
+
+Console.WriteLine(freshIdCount);
