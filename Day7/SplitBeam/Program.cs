@@ -5,10 +5,8 @@ int rowCount = rows.Count;
 int splits = 0;
 List<int> start = new();
 start.Add(splitters.IndexOf('S'));
-bool isSplit = false;
 for (int i = 1; i < rows.Count; i++)
 {
-    isSplit = false;
     string row = rows[i];
     int index = 0;
     if (row.Contains('^'))
@@ -19,19 +17,10 @@ for (int i = 1; i < rows.Count; i++)
             index = c;
             if (start.Contains(index))
             {
-                if (!start.Contains(index + 1) && index < row.Length) 
-                {
-                    start.Add(index + 1);
-                    start.Remove(index);
-                    isSplit = true;
-                }
-                if (!start.Contains(index - 1) && index > 0) 
-                {
-                    start.Add(index - 1);
-                    start.Remove(index);
-                    isSplit = true;
-                }
-                if (isSplit == true) splits++;
+                if (!start.Contains(index + 1) && index < row.Length) start.Add(index + 1);
+                if (!start.Contains(index - 1) && index > 0) start.Add(index - 1);
+                start.Remove(index);
+                splits++;
             }
         }
     }
