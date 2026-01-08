@@ -1,5 +1,8 @@
-﻿string splitters = File.ReadAllText(AppContext.BaseDirectory + "../../../input.txt");
+﻿using SplitBeam;
+
+string splitters = File.ReadAllText(AppContext.BaseDirectory + "../../../example.txt");
 List<string> rows = splitters.Split('\n').Select(x => x.Trim()).ToList();
+splitters = splitters.Replace("\r\n", "");
 int rowCount = rows.Count;
 
 int splits = 0;
@@ -26,4 +29,7 @@ for (int i = 1; i < rows.Count; i++)
     }
 }
 
-Console.WriteLine(splits);
+// Console.WriteLine(splits);
+
+Timelines timelines = new();
+Console.WriteLine(timelines.TimelineCount(rows, splitters));
