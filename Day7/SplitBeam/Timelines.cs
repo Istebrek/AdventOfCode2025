@@ -2,41 +2,36 @@
 
 public class Timelines
 {
-    public int TimelineCount(List<string> rows, string input)
+    public long TimelineCount(List<string> rows, string input)
     {
-        int timelines = 0;
-        bool newPath = false;
-        bool right = true; 
-
-        do
+        long timelines = 0;
+        int startIndex = rows[0].IndexOf('S');
+        List<(int, int)> optionRows = new List<(int, int)>();
+        int i = 1;
+        while (i < rows.Count)
         {
-            int startIndex = rows[0].IndexOf('S');
-            newPath = false;
-            for (int i = 1; i < rows.Count; i++)
+            bool option = false;
+            if (i == rows.Count - 1)
             {
-                string row = rows[i];
-                int rowL = row.Length;
-                if (row[startIndex].Equals('.')) input = input.Substring(0, startIndex + i * rowL) + '|' + input.Substring(startIndex + i * rowL + 1);
-                if (row[startIndex].Equals('^'))
+                timelines++;
+                if (optionRows.Count > 0)
                 {
-                    if (right == true && startIndex >= 0 && startIndex < rowL)
-                    {
-                        if (!input[startIndex+1 + (i+1) * rowL].Equals('|')) newPath = true;
-                        input = input.Substring(0, startIndex + 1 + i * rowL) + '|' + input.Substring(startIndex + 2 + i * rowL);
-                        startIndex += 1;
-                    } else if (right == false && startIndex > 0 && startIndex <= rowL)
-                    {
-                        if (!input[startIndex-1 + (i+1) * rowL].Equals('|')) newPath = true;
-                        input = input.Substring(0, startIndex - 1 + i * rowL) + '|' + input.Substring(startIndex + i * rowL);
-                        startIndex -= 1;
-                    } 
-                }
+                    var (rowI, startI) = optionRows[0];
+                    option = true;
+                    startIndex = startI;
+                    i = rowI;
+                    optionRows.RemoveAt(0);
+                    
+                } else break;
             }
-            right = (right == true) ? false : true;
-            if (newPath == true) timelines++;
-        } while (newPath == true);
-
+            string row = rows[i];
+            if (row[startIndex].Equals('^'))
+            {
+                if (i < rows.Count - 1 && option == false) optionRows.Insert(0, (i, startIndex));
+                startIndex += option ? 1 : -1;
+            }
+            i++;
+        }
         return timelines;
     }
-
 }

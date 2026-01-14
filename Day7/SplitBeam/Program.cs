@@ -1,6 +1,6 @@
 ﻿using SplitBeam;
 
-string splitters = File.ReadAllText(AppContext.BaseDirectory + "../../../example.txt");
+string splitters = File.ReadAllText(AppContext.BaseDirectory + "../../../input.txt");
 List<string> rows = splitters.Split('\n').Select(x => x.Trim()).ToList();
 splitters = splitters.Replace("\r\n", "");
 int rowCount = rows.Count;
