@@ -32,4 +32,4 @@ for (int i = 1; i < rows.Count; i++)
 // Console.WriteLine(splits);
 
 Timelines timelines = new();
-Console.WriteLine(timelines.TimelineCount(rows, splitters));
+Console.WriteLine(timelines.TimelineCount(rows));
